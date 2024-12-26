@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Тестова HTML-сторінка">
+    <title>HTML Шаблон</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Шапка -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#content">Контент</a></li>
+                <li><a href="#about-us">Про нас</a></li>
+                <li><a href="#contact-form">Зареєструватись</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="content">
+        <h1>Тут могла бути реклама, але не занесли(</h1>
+        <p>Тому це просто тестова HTML-сторінкка.</p>
+    </section>
+    <section id="about-us">
+        <h2>Про нас</h2>
+        <p>Цю тестову сторінку розробив Чуприна Євгеній з групи К21-2.</p>
+    </section>
+    <section id="contact-form">
+        <h2>Форма для реєстрації</h2>
+        <form action="#" method="post" novalidate>
+            <label for="name">Ім'я:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Email-адреса:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="phone">Номер телефону:</label>
+            <input type="tel" id="phone" name="phone" pattern="\+380\d{9}" required placeholder="+380--(--- -- --)">
+            <label for="message">Повідомлення:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <label>
+                <input type="checkbox" name="agree" required>
+                Я походжуюсь на обробку персональних даних
+            </label>
+            <button type="submit">Надіслати</button>
+        </form>
+    </section>
+    <footer>
+        <p>© 2024 Чуприна Євгеній</p>
+        <ul>
+            <li><a onclick="openModal('privacy')">Політика конфіденційності</a></li>
+            <li><a onclick="openModal('terms')">Умови використання</a></li>
+        </ul>
+        <p>Соціальні мережі:  
+            <a target="_blank" href="https://www.instagram.com/death_1992/">Instagram</a> 
+        </p>
+    </footer>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-text"></p>
+        </div>
+    </div>
+    <script>
+        function openModal(type) {
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalText = document.getElementById('modal-text');
+            if (type === 'privacy') {
+                modalTitle.textContent = 'Політика конфіденційності';
+                modalText.textContent = 'Це тестова сторінка, усі персональні дані захищено';
+            } else if (type === 'terms') {
+                modalTitle.textContent = 'Умови використання';
+                modalText.textContent = 'Comming soon';
+            }
+            modal.style.display = 'flex';
+        }
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
